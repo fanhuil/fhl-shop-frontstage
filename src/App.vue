@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VueCookies from 'vue-cookies'
 
 export default {
   name: 'App',
+  data(){
+	return {
+		token:'fanhuilinabc'
+	}
+  },
   components: {
-    HelloWorld
+  },
+  mounted(){
+	var jwt_token = VueCookies.get('jwt-token')
+	if(jwt_token == null){
+		this.$router.push('/login')
+	}
+	// this.$axios.request.request({
+	// 	url:'/login',
+	// }).then((res)=>{
+	// 	console.log(res.data)
+	// })
   }
 }
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 </style>
