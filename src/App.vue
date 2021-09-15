@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import VueCookies from 'vue-cookies'
+
 
 export default {
   name: 'App',
@@ -17,10 +17,8 @@ export default {
   components: {
   },
   mounted(){
-	var jwt_token = VueCookies.get('jwt-token')
-	if(jwt_token == null){
-		this.$router.push('/login')
-	}
+
+	// 判断是否需要登录 
 	// this.$axios.request.request({
 	// 	url:'/login',
 	// }).then((res)=>{
@@ -31,12 +29,17 @@ export default {
 </script>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+	*{
+		margin: 0;
+		padding: 0;
+	}
+#app {
+	height: 100vh;
+/*  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-} */
+  margin-top: 60px; */
+}
 </style>
