@@ -41,7 +41,6 @@
 			onLogin(formName) {
 				// 验证规则
 				this.$refs[formName].validate((valid) => {
-				  console.log(valid)
 				  if (valid) {
 					this.$request.request({
 						url: '/login',
@@ -52,7 +51,13 @@
 						}
 					}).then((res) => {
 						VueCookies.set('jwt-token',res.data.token)
-						this.$router.push({path:'/'})
+						this.$message({
+							message:'登录成功，正在跳转',
+							type:'success'
+						})
+						setTimeout(()=>{
+							this.$router.push({path:'/'})
+						},1500)
 					})
 				  } else {
 					console.log(valid);

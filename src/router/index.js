@@ -4,6 +4,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+//引入饿了么组件库和样式并使用
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI)
+
+import { Message } from 'element-ui';
+
+// 引入cookie库并使用
 import VueCookies from 'vue-cookies'
 var jwt_token = VueCookies.get('jwt-token')
 
@@ -58,6 +66,11 @@ router.beforeEach((to, from, next) => {
 		if (jwt_token) { // 有登录信息，可以通过
 			next()
 		} else {
+			console.log(Message)
+			Message({
+				message:'登录状态失效，请重新登录',
+				type:'warning'
+			})
 			next('/login')
 		}
 	} else {

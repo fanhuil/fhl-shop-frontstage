@@ -6,10 +6,16 @@
 </template>
 
 <script>
+	import VueCookies from 'vue-cookies'
 	export default{
 		methods:{
 			logout(){
-				// this.
+				VueCookies.set('jwt-token','')
+				this.$message({
+					message:'退出成功',
+					type:'success'
+				})
+				this.$router.push('/login')
 			}
 		}
 	}
