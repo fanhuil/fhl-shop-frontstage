@@ -16,6 +16,7 @@
 </template>
 
 <script>
+	import VueCookies from 'vue-cookies'
 	export default {
 		data() {
 			return {
@@ -46,10 +47,12 @@
 						url: '/login',
 						method: 'post',
 						data: {
-							name: "fanhuilin"
+							email: this.form.username,
+							password:this.form.password
 						}
 					}).then((res) => {
-						console.log(res.data)
+						VueCookies.set('jwt-token',res.data.token)
+						this.$router.push({path:'/'})
 					})
 				  } else {
 					console.log(valid);

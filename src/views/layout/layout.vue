@@ -26,14 +26,10 @@
 			Left
 		},
 		created() {
-			// var jwt_token = VueCookies.get('jwt-token')
-			// if (jwt_token == null) {
-			// 	this.$router.push('/login')
-			// }
-			// this.$message({
-			// 	message: '登录状态已过期，请重新登录',
-			// 	type: 'warning'
-			// });
+			// 获取token信息并解析
+			var jwt_token = VueCookies.get('jwt-token')
+			let user = JSON.parse(decodeURIComponent(escape(window.atob(jwt_token.split('.')[1])))) // 获取负载信息
+			console.log(user)
 		}
 	}
 </script>

@@ -11,19 +11,11 @@ export default {
   name: 'App',
   data(){
 	return {
-		token:'fanhuilinabc'
 	}
   },
   components: {
   },
   mounted(){
-
-	// 判断是否需要登录 
-	// this.$axios.request.request({
-	// 	url:'/login',
-	// }).then((res)=>{
-	// 	console.log(res.data)
-	// })
   }
 }
 </script>
