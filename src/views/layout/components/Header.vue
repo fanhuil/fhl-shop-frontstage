@@ -1,21 +1,33 @@
 <template>
 	<div class="header-container">
 		<div>后台管理系统</div>
-		<a @click="logout">退出</a>
+		<a @click="logout">{{id}}退出</a>
 	</div>
 </template>
 
 <script>
 	import VueCookies from 'vue-cookies'
 	export default{
+		props:[
+			'id'
+		],
 		methods:{
 			logout(){
-				VueCookies.set('jwt-token','')
-				this.$message({
-					message:'退出成功',
-					type:'success'
+				// VueCookies.set('jwt-token','')
+				this.$request.request({
+					url:'/logout',
+					method:'post',
+				}).then(res=>{
+					console.log(res.data)
 				})
-				this.$router.push('/login')
+				
+				
+				
+				// this.$message({
+				// 	message:'退出成功',
+				// 	type:'success'
+				// })
+				// this.$router.push('/login')
 			}
 		}
 	}

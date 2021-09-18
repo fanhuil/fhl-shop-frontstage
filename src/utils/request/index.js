@@ -6,10 +6,11 @@ const request = axios.create({
 })
 
 import VueCookies from 'vue-cookies'
-var jwt_token = VueCookies.get('jwt-token')
+
 
 // 请求前置拦截器
 request.interceptors.request.use(function (config) {
+	var jwt_token = VueCookies.get('jwt-token')
 	if(jwt_token != null){
 		config.headers.Authorization=`Bearer ${jwt_token}`
 	}

@@ -53,7 +53,8 @@
 						VueCookies.set('jwt-token',res.data.token)
 						this.$message({
 							message:'登录成功，正在跳转',
-							type:'success'
+							type:'success',
+							duration:1500
 						})
 						setTimeout(()=>{
 							this.$router.push({path:'/'})

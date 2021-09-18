@@ -2,7 +2,7 @@
 	<el-container class="layout-container">
 		<el-aside width="201px"><Left class="left-menu"></Left></el-aside>
 		<el-container>
-			<el-header><Header></Header></el-header>
+			<el-header><Header :id="id"></Header></el-header>
 			<el-main><router-view /></el-main>
 		</el-container>
 	</el-container>
@@ -15,7 +15,7 @@
 	export default {
 		data() {
 			return {
-
+				id:null,
 			}
 		},
 		methods: {
@@ -29,7 +29,8 @@
 			// 获取token信息并解析
 			var jwt_token = VueCookies.get('jwt-token')
 			let user = JSON.parse(decodeURIComponent(escape(window.atob(jwt_token.split('.')[1])))) // 获取负载信息
-			console.log(user)
+			this.id = user.sub
+			console.log(this.id)
 		}
 	}
 </script>
